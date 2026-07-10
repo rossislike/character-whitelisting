@@ -1,0 +1,126 @@
+[00:00] Okay, so the service takes in the file, it checks everything, right?
+[00:04.800] Maybe like a rule based, which can be configured, right?
+[00:07.100] Say, for example, I want to replace these characters, right?
+[00:11.600] The configurable rules, right?
+[00:14.480] And then it can kind of clean the file, make a clean version of the file and
+[00:20.300] save it back again to the storage account.
+[00:27.640] So this service, right, we should be able to call from any,
+[00:32.200] let's say, the funding or either from Distil Connect or from any other point, right?
+[00:37.240] Because whenever a user uploads a file, right?
+[00:40.640] The UI should be able to call the service and then clean up the file, right?
+[00:58.240] So, fine, because collateral is Python, right?
+[01:02.040] It can be a service in Python 2, right?
+[01:05.720] And then what it can do is it can just clean up the file and rewrite the file again,
+[01:11.760] right, to the same storage account.
+[01:27.640] Okay.
+[01:37.640] Okay, so we can work on that, right?
+[01:41.640] Now Python is not a big thing, we can have Python or the thing is, right?
+[01:50.280] Do funding needs to call, right?
+[01:52.640] Or UI can call this one directly collateral, what does funding needs to call collateral?
+[01:57.440] Right, because why do you-
+[02:13.440] No, no, no, I understand if the configuration is in collateral, that's okay.
+[02:17.440] But why do we need to add funding in between, right?
+[02:20.440] Why does funding need to orchestrate to collateral?
+[02:22.440] Why can't just UI directly call collateral, right?
+[02:27.440] No, it's not an edit checks, right?
+[02:37.440] Because it's nothing to do with edit checks, right?
+[02:40.440] This is like a- you can call it like a file cleanup, right?
+[02:47.440] Right, this is basically sanitizing the file, right?
+[02:51.440] So I get a file, right, from a client, right?
+[02:55.440] Imagine like I'm running like a scan, right?
+[02:58.440] Make sure, okay, the file has anything that I want to clean up, right?
+[03:03.440] Any special characters I want to clean.
+[03:05.440] Okay, this file is good, and then, okay, there's nothing that I need to sanitize or clean,
+[03:10.440] and then it will save the file with a different name, right?
+[03:13.440] We don't want to override what client uploaded, we're going to rename the file,
+[03:17.440] and then we just need to let the funding know that it needs to pick up this file from here, right?
+[03:26.440] Because anything from UI, right?
+[03:28.440] We just need to have this one, like save Moby, like just right now,
+[03:33.440] it's only funding and a payoff files that needs to go through this process,
+[03:38.440] and then we just clean up the file and save it.
+[03:45.440] Mm-hmm, correct.
+[03:54.440] No, no, no, we want one common service, right?
+[03:56.440] We don't want to duplicate process, cleaning up different parts of the file.
+[04:01.440] So this is what I'm thinking, right?
+[04:03.440] Maybe let me know.
+[04:04.440] So from UI, the client is uploading the file.
+[04:07.440] It's a funding file, right?
+[04:09.440] I go and upload a funding file, and the file gets uploaded to the storage account,
+[04:14.440] and before even calling the funding service, like a submit or something, right,
+[04:21.440] should we call the collateral and clean up the file?
+[04:28.440] And then,
+[04:35.440] correct, so, yeah, you can be, you can be collateral, right?
+[04:38.440] Because it can be common, right?
+[04:40.440] It doesn't need to go into funding.
+[04:42.440] It can be in collateral, right?
+[04:45.440] We created in collateral, okay?
+[04:47.440] So the logic, I think it exists in collateral, right?
+[04:52.440] So we just have a set of rules that what we define.
+[04:55.440] These are the characters I want to clean up, right?
+[04:58.440] And then the collateral has the code, it will load the Excel file,
+[05:02.440] it will clean up all of them and save it as a new file,
+[05:05.440] and it returns back the clean file, right?
+[05:09.440] What I'm asking is, right, when the funding request, when you create a new funding request,
+[05:14.440] the UI should be able to call before submitting that file to the funding service.
+[05:22.440] Before the user even clicks on submit, the whole thing should be done,
+[05:26.440] because these files are very small, right?
+[05:28.440] They're not like a huge files.
+[05:52.440] Okay, the flow is, right?
+[05:55.440] So user approach the file from the UI, correct?
+[05:58.440] Okay, let me share my screen, right?
+[06:00.440] This is what I, let me share.
+[06:25.440] Okay.
+[06:29.440] Okay.
+[06:34.440] Okay.
+[06:39.440] Okay.
+[06:44.440] Okay.
+[06:48.440] Okay.
+[06:54.440] So this is the funding request, right?
+[07:05.440] So here, once I upload the file,
+[07:16.440] so I have this file uploaded, right?
+[07:18.440] So whenever user clicks on before like some bit, right, we make a collateral call, right?
+[07:26.440] And then clean up the file, right?
+[07:32.440] And yeah, directly to the collateral before user clicks on submit, right?
+[07:38.440] Whenever the file is uploaded immediately, right, we can call collateral
+[07:42.440] even before user submits or rush.
+[07:45.440] And then once you submit that we wait for the collateral call to finish.
+[07:49.440] So we have the corrected file, which we update in the funding call.
+[07:57.440] So the funding call when it's submitted, we're sending the file back, right?
+[08:00.440] So now we're going to send a new final impact so that the funding knows that, okay,
+[08:05.440] this file is already sanitized.
+[08:07.440] So we don't even need to change anything in funding.
+[08:11.440] The only thing you need to change is the UI and the collateral service.
+[08:17.440] If possible, right?
+[08:18.440] The funding changes may be very minimal.
+[08:20.440] Maybe to update the final name or even the final name also we need to check here.
+[08:37.440] So the configurations can be in the configure screen, right?
+[08:40.440] So what we can say is, right, because we can have a configure.
+[08:43.440] I'm going to kind of strip off all these characters, right?
+[08:53.440] That's all for now, just one rule, but it's mostly configurable rule, right?
+[08:58.440] Yeah, this should be very straightforward to do.
+[09:03.440] Yeah, right, because in collateral it should be very straightforward to do
+[09:08.440] because right now we only have one rule saying we are not allowing these characters.
+[09:13.440] And this already, this is only in file name.
+[09:19.440] But what I'm saying is, right, I think the rules which I sent you, right?
+[09:23.440] Much be something similar, right?
+[09:24.440] It's only like a list of characters that we need to replace with blank, right?
+[09:30.440] Yeah.
+[09:34.440] And then we can call that collateral even from payoff, right?
+[09:37.440] So I'll just go to the same flow and then I call it when user uploads the file.
+[09:42.440] Oops, sorry, this is.
+[09:47.440] Oh, this one doesn't have.
+[09:49.440] Okay.
+[09:50.440] Yeah, the same thing on payoffs too.
+[09:52.440] Yeah.
+[09:53.440] Yeah.
+[09:53.440] It is called the same thing on payoff, right?
+[09:56.440] When you upload the file and before submit, we just do a call.
+[10:03.440] Yeah.
+[10:22.440] It's a once you have more concrete plan, right?
+[10:24.440] How we want to implement?
+[10:25.440] Let me know.
+[10:26.440] Yeah, either I can help you or I can, yeah, we can work together.
+[10:31.440] All right.
+[10:36.440] All right.
+[10:37.440] Okay. Thank you.
+[10:39.440] Yeah.
