@@ -1,0 +1,138 @@
+ Thank you.
+ Thank you.
+ So, the owner of the file, which funding or digital connect is going to give collateral a,
+ a short-lived SAS, and then that gives, for both read and write, so collateral is going
+ to read, sanitize, and then write with those short-lived SAS.
+ Okay.
+ I got that part, right?
+ That's what I was trying to see.
+ Yeah.
+ Is that what you were thinking?
+ Yeah.
+ The problem is I'm thinking if we can avoid it, but it doesn't look like it's an easy way
+ to avoid it.
+ Okay.
+ I think that is fine.
+ That's one question, right?
+ And then if you go below, right?
+ This one to see, yeah.
+ To what part?
+ To that rules part, right?
+ Where we have the configurations, right?
+ Do you mean the actual?
+ The white listing?
+ Yeah.
+ Yeah.
+ The white listing part.
+ Yeah.
+ Yeah.
+ This is too much for me to read, right?
+ There's a lot.
+ Oh, yes.
+ Oh, yes.
+ So these symbols, right?
+ If we look at the email which I sent, right?
+ Right.
+ So these symbols, right?
+ If we look at the email which I sent, right?
+ Right.
+ To what part?
+ To that rules part, right?
+ Where we have the configurations, right?
+ Do you mean the actual?
+ The white listing?
+ Yeah.
+ The white listing part, yeah.
+ Yeah.
+ Yeah.
+ This is too much for me to read, right?
+ There's a lot.
+ Oh, yes.
+ Oh, yes.
+ So these symbols, right?
+ If we look at the email which I sent, right?
+ There is one for field description, right?
+ There's one for everything and description has a more broader, right?
+ How are we handling that?
+ Right?
+ I did not understand.
+ So in the, it's going to be stored in here.
+ So how do we understand what is the field and what is the description column, right?
+ Field description identifier.
+ So for the column.
+ Yeah, but it says it's deferred to V2, right?
+ Why are we different?
+ Why are we different?
+ Because that's the main requirement, right?
+ Why are we different to V2?
+ Right.
+ Okay.
+ That should be V1.
+ Mm-hmm.
+ So we just need to make sure because that's, let's say, if you look at that email which I
+ forwarded, right?
+ So there is a rule for everything except description.
+ So description, right?
+ That allowed some additional special characters, right?
+ Mm-hmm.
+ So we just need to make sure that it's properly designed.
+ And then also there is some payoff, right?
+ Where we're kind of stripping out.
+ Those are not in the rules too, right?
+ Right.
+ How do we add that rule?
+ Yeah.
+ Yeah, you can open the email and then I can pinpoint exactly what I'm referring to.
+ No worries.
+ I will send you that.
+ I have another call at 11:30.
+ But is it okay?
+ But that's one thing that you need to make sure that it is handled.
+ Also, I think we just need to check in payoff.
+ We're just doing some additional file sanitization, right?
+ That also we need to add it over here.
+ Okay.
+ And so additional file sanitization in payoff?
+ I'll give you the exact point of code, right?
+ In payoff, what we're doing.
+ Okay.
+ Yeah.
+ So we can just do that too.
+ Yeah.
+ And then make sure that we have the description and the default.
+ Yeah.
+ So there's a default white list and then the description white list, right?
+ Yes.
+ So if you kind of compare both of them, right?
+ The description white list has an additional, right?
+ Mm-hmm.
+ Yeah.
+ Those are the ones which it allows compared to the default one.
+ Right.
+ So we need to see how we can categorize a column as a description, right?
+ Because every column is not going to be description, right?
+ We need to know.
+ Mm-hmm.
+ Right?
+ Yeah.
+ And collateral already has a schema, so it should be able to figure it out.
+ Okay.
+ Okay.
+ Okay.
+ Yes.
+ All right.
+ I will let you know, right?
+ I'll call you back, right?
+ If you have those two, right?
+ And then I think we are pretty much good in that case.
+ Okay.
+ Okay.
+ Thank you.
+ All right.
+ Thanks.
+ All right.
+ Thanks.
+ All right.
+ Thank you.
+ All right.
+ Thanks.
