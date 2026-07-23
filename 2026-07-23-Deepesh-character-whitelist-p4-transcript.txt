@@ -1,0 +1,416 @@
+Deepesh Character Whitelist Part 4
+Audio transcript through 00:21:16
+
+Machine-generated transcript, lightly normalized for known names and product terms. Speaker labels are unavailable. Content after 00:21:16 is omitted per request.
+
+ So the user uploads the file, it goes to blob.
+ We run the sanitization endpoint in Collateral service.
+ So I believe that's where he wants to keep it.
+ That is in Python.
+ So that's the next thing.
+ He runs the, we run the sanitation Collateral service.
+ Well, first thing it does is this endpoint.
+ Copy this file.
+ And it creates a backup.
+ And the different location.
+ So this is what I'm thinking on a very high level.
+ Now there are some things that we can do in phase two.
+ Let's keep it as phase wise.
+ Let's, if you call this phase one,
+ then in phase two,
+ we can add more logging.
+ And in fact, phase 1.1, I would call it phase 1.1
+ because we need to do some validation as well.
+ Check user access to file.
+ Meaning whether he has permission
+ to access that facility or not, right?
+ So that is very important.
+ So that has to happen.
+ That's the only check we, I can think of
+ which is absolutely mandatory.
+ And then phase two, we can add logging.
+ So where, this is what I'm thinking.
+ I can't see like, so can you, can be like,
+ what is, where are we right now?
+ And if you want to start,
+ is there anything that you need from Srini
+ or someone that is missing?
+ Well, just we always, the only thing we have is
+ the upload component right now
+ or the existing way we upload.
+ We need to, yeah, start implementing essentially.
+ And, or I need to start implementing and then so that's,
+ yeah, that involves collateral.
+ I don't.
+ No, sorry, sorry.
+ Yeah, so the user has already uploaded the file to Blob
+ and the file is already uploaded.
+ Now, before user clicks on submit button,
+ we can actually on the UI, right?
+ So the way I saw the UI is user,
+ use the file drag and drop control uploads the file.
+ It goes and sits on to Blob.
+ Once that is done, he clicks on submit.
+ So what we're going to do is we're going to disable
+ the submit button, let's say,
+ and run this job as soon as the file is uploaded
+ or not the job, but call this endpoint
+ as soon as file is uploaded.
+ And once that this endpoint returns of 200,
+ we allow user to submit the funding file.
+ So that's what we are thinking to begin with.
+ Now, you know, so at this point of time,
+ you only need to create an endpoint on collateral
+ that can sanitize.
+ So, you know, so that's where we're going to start.
+ And obviously you have rules that you know.
+ So you, are you aware of the fact?
+ Let me confirm, the mission must be in one second.
+ So if you look at this thing,
+ and I'm also not very well versed, so bear with me.
+ But I know there's one thing that can copy you on this.
+ Are not disk, configure, no support.
+ Have you looked at this data dictionary?
+ Because that has list of columns that goes to the,
+ that are part of the funding file?
+ I haven't looked at that.
+ Yeah, because this is what can determine, you know,
+ what kind of values are there, like, you know,
+ so these are all the columns,
+ possible columns in your funding file.
+ And this has the data type here.
+ And I believe you have set of rules.
+ I don't, I saw, Srini showed it to me once.
+ There is set of rules that you want to use,
+ that problematic is already running in order to sanitize.
+ So let's say that, hey, if you do have that rules,
+ set of rules that you want to,
+ like based on which you want to sanitize?
+ Yes, I have a set of rules.
+ Do you mind bringing that up just real quick?
+ I'm going to stop sharing.
+ Okay.
+ Okay.
+ All right.
+ Okay, I'm sorry.
+ Okay, so here are the rules.
+ Yeah, I don't see, sorry, no.
+ You don't see my screen?
+ No.
+ No, it's not loading anything.
+ I don't know, it's my side,
+ but I'm still seeing like a blank screen.
+ Okay, how about, I'm just going to send you?
+ Yeah, perfect, that's fine.
+ Ticket here, and you'll see the rules in the ticket,
+ or the, yeah.
+ Mm-hmm.
+ The whitelist.
+ Yeah, I know.
+ Yeah, okay, perfect.
+ So, do you follow whitelist?
+ So these are allowed, right?
+ Everything else is not allowed?
+ Yes, these are, yeah, allowed whitelist.
+ Okay.
+ What about the dollar?
+ Okay, dollar sign is allowed as well.
+ Okay.
+ So I think, yeah, we have a list of characters.
+ So we're not, we're not looking into,
+ so there are two lists.
+ I know there's one default whitelist,
+ and there's description whitelist based on,
+ let me share my screen now.
+ Please let me know once you see my screen.
+ Where did that go?
+ Okay, based on this, right?
+ I don't think we have any description column,
+ because description column I believe is usually like long,
+ like 50 characters, 100 characters, right?
+ But most of this is fairly small, like back at 10 here.
+ So I was looking into this.
+ There are a few columns, like address and city,
+ they have like 60 characters.
+ So what I believe is we still, to begin with,
+ we're only gonna start with the default list,
+ and not touch the other one, right?
+ Description.
+ We'll get to the description in maybe phase two
+ if we need to.
+ So let's just maybe start implementing this,
+ like okay, so we have kind of figured out
+ that we need to start working only on the default whitelist.
+ We know we're gonna create an endpoint
+ that will first take the backup of the file,
+ originally uploaded file,
+ and put it to a different location.
+ And we're gonna modify the original uploaded file,
+ because that's the file remaining of the system we'll use,
+ right?
+ That's why we are updating the original file.
+ We are not dealing with any sensitive data.
+ That's the assumption we are making.
+ So no assessment, that sort of things.
+ And even if it's there,
+ we are not, we are just going off the sanitization rule.
+ So we're gonna sanitize the fields.
+ We're not doing any logging to begin with,
+ or we can at least, if you need to log something,
+ we can just dump it on the console for now.
+ Hey, this is what got sanitized, this file,
+ we modified this many record or something like that.
+ Well, we can dump that.
+ So only thing is, if we convert this into a regex
+ and run it across all the cells, right?
+ That's all we need to do to begin with.
+ Good.
+ Do you wanna do that to start with
+ because it doesn't need to be configurable?
+ Yes, so, yeah.
+ So this needs to be configurable as well.
+ That's a good point.
+ We need to keep that in mind.
+ But are you planning to,
+ are you planning to keep that as a list in a database
+ and then read from that or just, I think,
+ if we, to begin with, if we just take that,
+ or we can also make an entry in the database, right?
+ So in the collateral database,
+ if we can put that in the table,
+ call it default whitelist and just dump it as it is,
+ then let, have a function that converts that into a regex
+ and then run the regex on,
+ or whatever, yeah, I suggest, right?
+ If it says, hey, there's a better way to do this,
+ but I can only think of regex to do certain things like this.
+ I was thinking of just taking this
+ and converting into regex, and then dump it.
+ The AI was, you said, like a per column,
+ per column, like configurable in the database.
+ Well, I mean, we dialed, this is from meetings,
+ which is really as well, too.
+ So this is what we came up with in the AI,
+ per column, in the database,
+ the per column configurable,
+ either field or description,
+ or yeah, field or description, but, you know, it will be-
+ So you already have this list, right?
+ Because I think this is what you get in the funding file.
+ So you already have this list.
+ You can take that, dump it, and then say,
+ so you wanna do like column by column,
+ like, hey, this is, because I believe this is applicable
+ to the entire dataset, meaning all the columns, right?
+ Why do you wanna go into the column level configuration?
+ Because they wanna remove it from everything.
+ They didn't say, did they say explicitly that, hey,
+ because they only have two type of list, right?
+ Description, which is typically on a description column,
+ and the default whitelist.
+ And the default whitelist is applicable to all the columns.
+ Do you wanna, or we can do it in phase two.
+ Again, I'm just trying to keep it barebones minimum,
+ an MVP product that these guys can start looking
+ and giving feedback, right?
+ Then we can actually, if somebody said,
+ hey, I want this to be customizable,
+ then we can say, hey, can you do this for this column?
+ Again, I'm just thinking loud here, right?
+ I don't have a very fixed opinion on this,
+ but I believe just because we have one week deadline
+ and we need to deliver this, if we-
+ When, see, we, in the scrum, I said sprint,
+ which is two weeks, right?
+ Right.
+ Sorry, I did not attend it two days.
+ Scrum, I had an internet issue I had to drop, but-
+ We need to get that, because, and then, no one, we didn't.
+ That needs to-
+ We can always pull in Shane now.
+ He wanted to be in the call,
+ but I said, I can talk to you, but either way is fine.
+ I mean, if we need, we can pull in Shane now
+ and then discuss the timeline,
+ which, again, I can't do anything.
+ But what he told me is one week is when they want to deliver
+ so that you guys start seeing
+ and start giving the feedback.
+ And we can start with something barebones minimum, right?
+ Okay, I mean, well, so this is what we've done so far,
+ right?
+ I've had about three meetings with Srini,
+ and then I've guided AI from what we discussed
+ to come up with the program.
+ So, like, that's one of the things that AI came up with.
+ And then, you know, we can, I guess, we can change it,
+ but I was thinking that, you know,
+ since that's what Srini was discussing,
+ what we were discussing, you know,
+ some decisions that we came up with,
+ and it's been going back and forth with him as far as,
+ you know, showing him, and then he said,
+ okay, yeah, let's, so we've come up with the decisions
+ that are in the plan.
+ There's that two files I sent you.
+ One is the concise, the one is the long plan.
+ And so, you know, a lot of those decisions are in there.
+ Yeah.
+ So to begin implementing.
+ So, that's kind of where.
+ Because I see this lot of, like, if you want,
+ I can actually, we can go over the plan as well now,
+ if that helps.
+ Because I'm also trying to gather more information here,
+ right, because some of these things I think is,
+ I wouldn't call it overkill,
+ but for lack of better word, I'm using overkill.
+ Things like, you know, your communication, right?
+ Because I don't think we need to pass user token.
+ Because if you just, if the collateral straight away
+ has the permission, which I believe it has,
+ or it can be added, it can just directly go
+ and sanitize the file, right?
+ That's all it's trying to do here.
+ There are things like per column.
+ I don't know, so let's talk about the per column
+ for a minute, right?
+ So, so you're going to have per column,
+ list of character that is allowed, that is not allowed?
+ Yes, and the perp, and they would all draw from the,
+ either the default, well, the default is essentially,
+ let's say.
+ Yeah, we can also do that, right?
+ So if we can take the default list to begin with
+ and just copy it all over for all the columns,
+ and in future, if we need to remove certain things,
+ we can actually remove them.
+ That's absolutely makes sense, right?
+ Just start with the default list for every column.
+ So we already have list of columns
+ in the form of data dictionary.
+ We can, how many columns are there?
+ About 196 column.
+ Yeah, so we can do that.
+ And if we encounter a different column,
+ we just use the, apply the default list there,
+ and then see how it goes.
+ So which is fine, we can still have the column logic there.
+ Because some of these things are not needed.
+ UI process submit sends,
+ sanitize document reference owner links the document
+ to the parent request and continues normal validation.
+ Because that's the, so what I suggested will avoid that,
+ because you're creating a backup of the original file,
+ and you're just modifying the other file, right?
+ The user uploaded.
+ And so there's no need to link and all that stuff,
+ because if you link and we change the file name
+ or something like that, then we need to go back
+ and update funding as well,
+ and tell funding, hey, this document got changed.
+ So the way it works is when the user uploads a file,
+ we make entity into a document,
+ there's a table called documents,
+ where we have a document ID,
+ and we append it to the file name.
+ So the file name always is like document ID,
+ underscore file name is what we use,
+ and funding have a reference of that now,
+ that's how funding knows that, hey,
+ this is the file available,
+ what's the blob location and all that stuff.
+ So we don't wanna change that
+ once the user has dumped the file,
+ or if we just take a backup and dump the backup
+ in another blob storage before we start sanitizing the file,
+ and then just make changes to the original file,
+ that will take care of it.
+ And some of these things can easily change, right?
+ Because for us, the heart and soul of this is,
+ this endpoint called sanitize.
+ And as long as it is able to,
+ given a path, it's able to sanitize the file,
+ what happens around it,
+ we can easily change that at any point of time.
+ So.
+ The way we currently had it was in the design,
+ was when the UI asks Collateral to clean,
+ to sanitize the file,
+ Collateral asks the owner,
+ which would be funding or digital connect,
+ to give me temporary access to the document
+ for that user, right?
+ So that's the permission,
+ the permission there, right?
+ And then, so if that checks out,
+ then it gets,
+ then it gets two short lived links,
+ one to read the original file,
+ and one to write the clean file,
+ so that's the way,
+ and so Collateral would use those to pull the file
+ from the Azure, clean it,
+ and then put the clean copy back.
+ That's also fine, right?
+ So we can make request to an endpoint and funding,
+ let's say we are only doing the funding or digital connect,
+ but let's just, it's gonna be same.
+ So let's take funding as an example.
+ We have an endpoint in funding called sanitize,
+ for example, as soon as we call that,
+ it checks whether the user has access
+ to that facility or not.
+ Step two, it gives you a short lived token,
+ and funding itself either calls Collateral,
+ or we return this to the UI,
+ and now UI go and call using that token,
+ using the SAS token, call sanitize service
+ or Collateral service,
+ then Collateral service,
+ basically goes and does the cleanup, right?
+ And in this case, we're not writing a new file,
+ we're gonna update the existing file
+ and take a backup of it before updating it.
+ So there's no need to,
+ obviously we need to read access,
+ write access and read access,
+ but we don't need to create a new file in that regard.
+ I mean, we are creating a new file,
+ but only when we're creating a backup.
+ So that way, now funding does not need to be disturbed.
+ See, the SAS token and giving access to Collateral,
+ we can always modify that.
+ Again, heart and soul of this is,
+ let's start with this guy, right?
+ This guy has to exist today,
+ and what happens around it,
+ we can easily change that.
+ That's plug and play in my mind.
+ So can we implement this?
+ Let's talk about this endpoint, right?
+ I think the first thing that we need is,
+ if you go column wise,
+ let's dump this into a table
+ and have list of characters that are allowed
+ for each column.
+ And I mean, if it, we can do this way, right?
+ If it is set, we just take it.
+ If it's not set, we just apply the default parameters,
+ the default list for any column.
+ So in the database, if, let's say,
+ let's say only two column exists.
+ One is called a certificate collateral
+ and one is called certificate name,
+ and that tells you,
+ hey, these are the characters that you need to allow,
+ that is allowed.
+ We're gonna standardize everything else.
+ And if you don't find records for any of the column,
+ we just use the default list.
+ Okay.
+ Yeah.
+ So let's, do you wanna start maybe this with this
+ and maybe I can create the other endpoints
+ on funding and other sites?
+ If you wanna start.
