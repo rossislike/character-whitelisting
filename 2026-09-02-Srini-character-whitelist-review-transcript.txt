@@ -1,0 +1,60 @@
+ See, even in the implement, there's just a distal connector implementing it, right?
+ Is this all related to just one PR? Because I thought it just called the REST API and then
+ the REST API will just going to clean it, right? Why do we need to kind of do so much
+ of code, right? To just call a REST API, right? Yeah, that's what I because if I need to implement
+ this one in an X service, right? Do I need to write so much of code, right? Because then
+ how is it like a common service, right? Because if we have so much of code, how is it going
+ to help somebody to implement this one? Yeah, that's, yeah, because, because when I'm writing
+ like a common kind of module or something that the caller should be just passing in call like
+ one and then the rest should be taken care by the collateral service, right? Because now
+ each and every service has its own logic, right? Yeah. And then also there's something, okay,
+ the funding one, this is authorization. Okay, this is in funding, gets the same code here,
+ right? Uh, and funding has little bit, uh, not sure what, what this file is doing, right?
+ Yeah. Because we just, I thought the flag, right. Um, is this supposed to be the flag
+ or that, yeah, we just need to make sure we eyeball the code, right? I understand it's
+ generated, but they just need to eyeball the code and make sure. Yeah. Yeah. This is all
+ kind of on, it should be in the collateral itself, right? At a patient be taking it right.
+ And then the sanitize right down, you know, we also need to think about it. Like, so if
+ we are adding this many lines of code, we just need to, because this clean up somebody
+ and everything can be done in the Python service itself, right? We don't need to have this clean
+ up here because the Python service is the one which is calling. So it can read the clean
+ up stats to, right? We don't need to again, right here, right? Is this flag already used
+ in the character remediation plan, right? Um, where is it being used? So if you look at
+ this one, right? So you define the flag in the database, right? The character remediation
+ enabled. Yeah. Yeah. Correct. Right. He's this one. I just want to see where does this being
+ used, right? Cause we're calling this file, um, clean up service, right? And then, uh,
+ cleaning up funding. Okay. I think this incident, you can correct it right down. So that at least
+ you can insert into that, uh, flag, right? You said what it is meant to do. I think so.
+ Right. Because you need to insert the plan here, right? Somewhere. Okay. I don't know.
+ I can just approve it. But I think it's, um, it's like, um, yeah. Next time, right. We just
+ need to make sure that the amount of code with I try it should be reasonable, right?
+ Um, yeah. Based on. Right. So yeah. If you can just add the flag and right. So that you
+ need an insubscript here, correct. To put that flag in. Yeah. If you can put it, right.
+ And then see if there's anything that can be simplified here. Yeah. Okay. And this collateral
+ service let me look at the collateral one. Can we just add in a file cleanup rules. Do
+ we need to code it separately to train because it just a clean function, right? Or it's just
+ one rule, one column, but if this is an identify, it's not going to remove from them. What does
+ an identifier do? Okay. And then the funding table is nothing to find. Okay. That's the
+ rules. Okay. You know, what are the scripts? I'm not sure what these scripts are. So what
+ we see is it just only specifically just only going to look through those characters and
+ just remove those characters, right? Other than that, it's not, I cannot add any configuration
+ other than just what it is there. Correct. Because it's just going through the sanitizer
+ is going through the practice and the Jason. And then it just the character isn't allowed.
+ It just happened that the initial, but in the department is more likely the rule should
+ be more comfortable, right? Yeah. That rightly suggest just the one thing, but we just want
+ us to trim this basis, right? The function should be also being more like configuration
+ right down. So these kind of studies know what all this is doing. Sorry. He's just a convert
+ that to XLS X. I think the hand under there, just in check input file and call it instead
+ of those that's it. Need to do broken references. Does it need to do on this upload and put file
+ and there are hidden columns or something like is it going to return them as I'm with the
+ resident columns. You know what I would've done, right? It's just like, because it's like
+ too much of things maybe because it's just a looping through that chase on ultimately
+ what it is doing. Right. It's looking through the Jason and removing the characters. What
+ is not in the list. Right. So the same thing is that we already did the Excel part, right?
+ Into pandas when we run, they do checks. If that's the case, we could have just added
+ a simple method, right? And then just remove those cases. Right. Because we're already here,
+ since we're already reading, but it gets into the pandas already. The data is in an area,
+ right? You could have just done that. And then the data of the pilot ended. So yeah, this
+ is like too much of code and then it's not even reusable to use somewhere, right? Because
+ it's just, yeah. Anyway, let me just do the corrections, right? What we said did. And then
+ let's take a list. Yeah. Okay. Yeah. No. Thank you. Ross.

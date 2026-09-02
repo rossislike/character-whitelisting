@@ -1,0 +1,182 @@
+WEBVTT
+
+00:00:00.390 --> 00:00:39.580
+ See, even in the implement, there's just a distal connector implementing it, right?
+
+00:00:39.580 --> 00:00:44.220
+ Is this all related to just one PR? Because I thought it just called the REST API and then
+
+00:00:44.220 --> 00:00:49.760
+ the REST API will just going to clean it, right? Why do we need to kind of do so much
+
+00:00:49.760 --> 00:01:05.380
+ of code, right? To just call a REST API, right? Yeah, that's what I because if I need to implement
+
+00:01:05.380 --> 00:01:15.830
+ this one in an X service, right? Do I need to write so much of code, right? Because then
+
+00:01:15.830 --> 00:01:20.530
+ how is it like a common service, right? Because if we have so much of code, how is it going
+
+00:01:20.530 --> 00:01:36.680
+ to help somebody to implement this one? Yeah, that's, yeah, because, because when I'm writing
+
+00:01:36.680 --> 00:01:44.480
+ like a common kind of module or something that the caller should be just passing in call like
+
+00:01:44.480 --> 00:01:53.760
+ one and then the rest should be taken care by the collateral service, right? Because now
+
+00:01:53.760 --> 00:02:10.920
+ each and every service has its own logic, right? Yeah. And then also there's something, okay,
+
+00:02:10.920 --> 00:02:31.830
+ the funding one, this is authorization. Okay, this is in funding, gets the same code here,
+
+00:02:31.830 --> 00:02:45.920
+ right? Uh, and funding has little bit, uh, not sure what, what this file is doing, right?
+
+00:02:45.920 --> 00:03:02.960
+ Yeah. Because we just, I thought the flag, right. Um, is this supposed to be the flag
+
+00:03:02.960 --> 00:03:29.190
+ or that, yeah, we just need to make sure we eyeball the code, right? I understand it's
+
+00:03:29.190 --> 00:04:17.420
+ generated, but they just need to eyeball the code and make sure. Yeah. Yeah. This is all
+
+00:04:17.420 --> 00:04:23.270
+ kind of on, it should be in the collateral itself, right? At a patient be taking it right.
+
+00:04:23.270 --> 00:04:46.990
+ And then the sanitize right down, you know, we also need to think about it. Like, so if
+
+00:04:46.990 --> 00:05:01.440
+ we are adding this many lines of code, we just need to, because this clean up somebody
+
+00:05:01.440 --> 00:05:05.480
+ and everything can be done in the Python service itself, right? We don't need to have this clean
+
+00:05:05.480 --> 00:05:10.790
+ up here because the Python service is the one which is calling. So it can read the clean
+
+00:05:10.790 --> 00:05:55.540
+ up stats to, right? We don't need to again, right here, right? Is this flag already used
+
+00:05:55.540 --> 00:06:10.740
+ in the character remediation plan, right? Um, where is it being used? So if you look at
+
+00:06:10.740 --> 00:06:14.780
+ this one, right? So you define the flag in the database, right? The character remediation
+
+00:06:14.780 --> 00:06:25.200
+ enabled. Yeah. Yeah. Correct. Right. He's this one. I just want to see where does this being
+
+00:06:25.200 --> 00:06:35.300
+ used, right? Cause we're calling this file, um, clean up service, right? And then, uh,
+
+00:06:35.300 --> 00:07:36.010
+ cleaning up funding. Okay. I think this incident, you can correct it right down. So that at least
+
+00:07:36.010 --> 00:07:42.840
+ you can insert into that, uh, flag, right? You said what it is meant to do. I think so.
+
+00:07:42.840 --> 00:08:36.080
+ Right. Because you need to insert the plan here, right? Somewhere. Okay. I don't know.
+
+00:08:36.080 --> 00:08:43.170
+ I can just approve it. But I think it's, um, it's like, um, yeah. Next time, right. We just
+
+00:08:43.170 --> 00:08:47.850
+ need to make sure that the amount of code with I try it should be reasonable, right?
+
+00:08:47.850 --> 00:08:54.620
+ Um, yeah. Based on. Right. So yeah. If you can just add the flag and right. So that you
+
+00:08:54.620 --> 00:09:05.080
+ need an insubscript here, correct. To put that flag in. Yeah. If you can put it, right.
+
+00:09:05.080 --> 00:10:06.080
+ And then see if there's anything that can be simplified here. Yeah. Okay. And this collateral
+
+00:10:06.080 --> 00:11:04.760
+ service let me look at the collateral one. Can we just add in a file cleanup rules. Do
+
+00:11:04.760 --> 00:11:34.790
+ we need to code it separately to train because it just a clean function, right? Or it's just
+
+00:11:34.790 --> 00:12:27.780
+ one rule, one column, but if this is an identify, it's not going to remove from them. What does
+
+00:12:27.780 --> 00:12:51.680
+ an identifier do? Okay. And then the funding table is nothing to find. Okay. That's the
+
+00:12:51.680 --> 00:16:48.710
+ rules. Okay. You know, what are the scripts? I'm not sure what these scripts are. So what
+
+00:16:48.710 --> 00:16:53.860
+ we see is it just only specifically just only going to look through those characters and
+
+00:16:53.860 --> 00:16:59.260
+ just remove those characters, right? Other than that, it's not, I cannot add any configuration
+
+00:16:59.260 --> 00:17:03.640
+ other than just what it is there. Correct. Because it's just going through the sanitizer
+
+00:17:03.640 --> 00:17:11.500
+ is going through the practice and the Jason. And then it just the character isn't allowed.
+
+00:17:11.500 --> 00:17:21.320
+ It just happened that the initial, but in the department is more likely the rule should
+
+00:17:21.320 --> 00:17:41.540
+ be more comfortable, right? Yeah. That rightly suggest just the one thing, but we just want
+
+00:17:41.540 --> 00:17:45.280
+ us to trim this basis, right? The function should be also being more like configuration
+
+00:17:45.280 --> 00:18:17.850
+ right down. So these kind of studies know what all this is doing. Sorry. He's just a convert
+
+00:18:17.850 --> 00:18:41.950
+ that to XLS X. I think the hand under there, just in check input file and call it instead
+
+00:18:41.950 --> 00:18:49.800
+ of those that's it. Need to do broken references. Does it need to do on this upload and put file
+
+00:18:49.800 --> 00:19:18.540
+ and there are hidden columns or something like is it going to return them as I'm with the
+
+00:19:18.540 --> 00:19:22.580
+ resident columns. You know what I would've done, right? It's just like, because it's like
+
+00:19:22.580 --> 00:19:27.260
+ too much of things maybe because it's just a looping through that chase on ultimately
+
+00:19:27.260 --> 00:19:30.560
+ what it is doing. Right. It's looking through the Jason and removing the characters. What
+
+00:19:30.560 --> 00:19:38.180
+ is not in the list. Right. So the same thing is that we already did the Excel part, right?
+
+00:19:38.180 --> 00:19:44.100
+ Into pandas when we run, they do checks. If that's the case, we could have just added
+
+00:19:44.100 --> 00:19:55.360
+ a simple method, right? And then just remove those cases. Right. Because we're already here,
+
+00:19:55.360 --> 00:19:59.120
+ since we're already reading, but it gets into the pandas already. The data is in an area,
+
+00:19:59.120 --> 00:20:08.120
+ right? You could have just done that. And then the data of the pilot ended. So yeah, this
+
+00:20:08.120 --> 00:20:32.520
+ is like too much of code and then it's not even reusable to use somewhere, right? Because
+
+00:20:32.520 --> 00:20:41.880
+ it's just, yeah. Anyway, let me just do the corrections, right? What we said did. And then
+
+00:20:41.880 --> 00:20:52.510
+ let's take a list. Yeah. Okay. Yeah. No. Thank you. Ross.
+

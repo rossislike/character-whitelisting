@@ -1,0 +1,692 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | DOTPROD = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "medium",
+		"multilingual": false,
+		"vocab": 51864,
+		"audio": {
+			"ctx": 1500,
+			"state": 1024,
+			"head": 16,
+			"layer": 24
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1024,
+			"head": 16,
+			"layer": 24
+		},
+		"mels": 80,
+		"ftype": 8
+	},
+	"params": {
+		"model": "/tmp/atlas-whitelist-review/ggml-medium.en-q5_0.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,390",
+				"to": "00:00:39,580"
+			},
+			"offsets": {
+				"from": 390,
+				"to": 39580
+			},
+			"text": " See, even in the implement, there's just a distal connector implementing it, right?"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:39,580",
+				"to": "00:00:44,220"
+			},
+			"offsets": {
+				"from": 39580,
+				"to": 44220
+			},
+			"text": " Is this all related to just one PR? Because I thought it just called the REST API and then"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:44,220",
+				"to": "00:00:49,760"
+			},
+			"offsets": {
+				"from": 44220,
+				"to": 49760
+			},
+			"text": " the REST API will just going to clean it, right? Why do we need to kind of do so much"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:49,760",
+				"to": "00:01:05,380"
+			},
+			"offsets": {
+				"from": 49760,
+				"to": 65380
+			},
+			"text": " of code, right? To just call a REST API, right? Yeah, that's what I because if I need to implement"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:05,380",
+				"to": "00:01:15,830"
+			},
+			"offsets": {
+				"from": 65380,
+				"to": 75830
+			},
+			"text": " this one in an X service, right? Do I need to write so much of code, right? Because then"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:15,830",
+				"to": "00:01:20,530"
+			},
+			"offsets": {
+				"from": 75830,
+				"to": 80530
+			},
+			"text": " how is it like a common service, right? Because if we have so much of code, how is it going"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:20,530",
+				"to": "00:01:36,680"
+			},
+			"offsets": {
+				"from": 80530,
+				"to": 96680
+			},
+			"text": " to help somebody to implement this one? Yeah, that's, yeah, because, because when I'm writing"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:36,680",
+				"to": "00:01:44,480"
+			},
+			"offsets": {
+				"from": 96680,
+				"to": 104480
+			},
+			"text": " like a common kind of module or something that the caller should be just passing in call like"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:44,480",
+				"to": "00:01:53,760"
+			},
+			"offsets": {
+				"from": 104480,
+				"to": 113760
+			},
+			"text": " one and then the rest should be taken care by the collateral service, right? Because now"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:53,760",
+				"to": "00:02:10,920"
+			},
+			"offsets": {
+				"from": 113760,
+				"to": 130920
+			},
+			"text": " each and every service has its own logic, right? Yeah. And then also there's something, okay,"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:10,920",
+				"to": "00:02:31,830"
+			},
+			"offsets": {
+				"from": 130920,
+				"to": 151830
+			},
+			"text": " the funding one, this is authorization. Okay, this is in funding, gets the same code here,"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:31,830",
+				"to": "00:02:45,920"
+			},
+			"offsets": {
+				"from": 151830,
+				"to": 165920
+			},
+			"text": " right? Uh, and funding has little bit, uh, not sure what, what this file is doing, right?"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:45,920",
+				"to": "00:03:02,960"
+			},
+			"offsets": {
+				"from": 165920,
+				"to": 182960
+			},
+			"text": " Yeah. Because we just, I thought the flag, right. Um, is this supposed to be the flag"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:02,960",
+				"to": "00:03:29,190"
+			},
+			"offsets": {
+				"from": 182960,
+				"to": 209190
+			},
+			"text": " or that, yeah, we just need to make sure we eyeball the code, right? I understand it's"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:29,190",
+				"to": "00:04:17,420"
+			},
+			"offsets": {
+				"from": 209190,
+				"to": 257420
+			},
+			"text": " generated, but they just need to eyeball the code and make sure. Yeah. Yeah. This is all"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:17,420",
+				"to": "00:04:23,270"
+			},
+			"offsets": {
+				"from": 257420,
+				"to": 263270
+			},
+			"text": " kind of on, it should be in the collateral itself, right? At a patient be taking it right."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:23,270",
+				"to": "00:04:46,990"
+			},
+			"offsets": {
+				"from": 263270,
+				"to": 286990
+			},
+			"text": " And then the sanitize right down, you know, we also need to think about it. Like, so if"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:46,990",
+				"to": "00:05:01,440"
+			},
+			"offsets": {
+				"from": 286990,
+				"to": 301440
+			},
+			"text": " we are adding this many lines of code, we just need to, because this clean up somebody"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:01,440",
+				"to": "00:05:05,480"
+			},
+			"offsets": {
+				"from": 301440,
+				"to": 305480
+			},
+			"text": " and everything can be done in the Python service itself, right? We don't need to have this clean"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:05,480",
+				"to": "00:05:10,790"
+			},
+			"offsets": {
+				"from": 305480,
+				"to": 310790
+			},
+			"text": " up here because the Python service is the one which is calling. So it can read the clean"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:10,790",
+				"to": "00:05:55,540"
+			},
+			"offsets": {
+				"from": 310790,
+				"to": 355540
+			},
+			"text": " up stats to, right? We don't need to again, right here, right? Is this flag already used"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:55,540",
+				"to": "00:06:10,740"
+			},
+			"offsets": {
+				"from": 355540,
+				"to": 370740
+			},
+			"text": " in the character remediation plan, right? Um, where is it being used? So if you look at"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:10,740",
+				"to": "00:06:14,780"
+			},
+			"offsets": {
+				"from": 370740,
+				"to": 374780
+			},
+			"text": " this one, right? So you define the flag in the database, right? The character remediation"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:14,780",
+				"to": "00:06:25,200"
+			},
+			"offsets": {
+				"from": 374780,
+				"to": 385200
+			},
+			"text": " enabled. Yeah. Yeah. Correct. Right. He's this one. I just want to see where does this being"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:25,200",
+				"to": "00:06:35,300"
+			},
+			"offsets": {
+				"from": 385200,
+				"to": 395300
+			},
+			"text": " used, right? Cause we're calling this file, um, clean up service, right? And then, uh,"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:35,300",
+				"to": "00:07:36,010"
+			},
+			"offsets": {
+				"from": 395300,
+				"to": 456010
+			},
+			"text": " cleaning up funding. Okay. I think this incident, you can correct it right down. So that at least"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:36,010",
+				"to": "00:07:42,840"
+			},
+			"offsets": {
+				"from": 456010,
+				"to": 462840
+			},
+			"text": " you can insert into that, uh, flag, right? You said what it is meant to do. I think so."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:42,840",
+				"to": "00:08:36,080"
+			},
+			"offsets": {
+				"from": 462840,
+				"to": 516080
+			},
+			"text": " Right. Because you need to insert the plan here, right? Somewhere. Okay. I don't know."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:36,080",
+				"to": "00:08:43,170"
+			},
+			"offsets": {
+				"from": 516080,
+				"to": 523170
+			},
+			"text": " I can just approve it. But I think it's, um, it's like, um, yeah. Next time, right. We just"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:43,170",
+				"to": "00:08:47,850"
+			},
+			"offsets": {
+				"from": 523170,
+				"to": 527850
+			},
+			"text": " need to make sure that the amount of code with I try it should be reasonable, right?"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:47,850",
+				"to": "00:08:54,620"
+			},
+			"offsets": {
+				"from": 527850,
+				"to": 534620
+			},
+			"text": " Um, yeah. Based on. Right. So yeah. If you can just add the flag and right. So that you"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:54,620",
+				"to": "00:09:05,080"
+			},
+			"offsets": {
+				"from": 534620,
+				"to": 545080
+			},
+			"text": " need an insubscript here, correct. To put that flag in. Yeah. If you can put it, right."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:05,080",
+				"to": "00:10:06,080"
+			},
+			"offsets": {
+				"from": 545080,
+				"to": 606080
+			},
+			"text": " And then see if there's anything that can be simplified here. Yeah. Okay. And this collateral"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:06,080",
+				"to": "00:11:04,760"
+			},
+			"offsets": {
+				"from": 606080,
+				"to": 664760
+			},
+			"text": " service let me look at the collateral one. Can we just add in a file cleanup rules. Do"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:04,760",
+				"to": "00:11:34,790"
+			},
+			"offsets": {
+				"from": 664760,
+				"to": 694790
+			},
+			"text": " we need to code it separately to train because it just a clean function, right? Or it's just"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:34,790",
+				"to": "00:12:27,780"
+			},
+			"offsets": {
+				"from": 694790,
+				"to": 747780
+			},
+			"text": " one rule, one column, but if this is an identify, it's not going to remove from them. What does"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:27,780",
+				"to": "00:12:51,680"
+			},
+			"offsets": {
+				"from": 747780,
+				"to": 771680
+			},
+			"text": " an identifier do? Okay. And then the funding table is nothing to find. Okay. That's the"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:51,680",
+				"to": "00:16:48,710"
+			},
+			"offsets": {
+				"from": 771680,
+				"to": 1008710
+			},
+			"text": " rules. Okay. You know, what are the scripts? I'm not sure what these scripts are. So what"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:48,710",
+				"to": "00:16:53,860"
+			},
+			"offsets": {
+				"from": 1008710,
+				"to": 1013860
+			},
+			"text": " we see is it just only specifically just only going to look through those characters and"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:53,860",
+				"to": "00:16:59,260"
+			},
+			"offsets": {
+				"from": 1013860,
+				"to": 1019260
+			},
+			"text": " just remove those characters, right? Other than that, it's not, I cannot add any configuration"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:59,260",
+				"to": "00:17:03,640"
+			},
+			"offsets": {
+				"from": 1019260,
+				"to": 1023640
+			},
+			"text": " other than just what it is there. Correct. Because it's just going through the sanitizer"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:03,640",
+				"to": "00:17:11,500"
+			},
+			"offsets": {
+				"from": 1023640,
+				"to": 1031500
+			},
+			"text": " is going through the practice and the Jason. And then it just the character isn't allowed."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:11,500",
+				"to": "00:17:21,320"
+			},
+			"offsets": {
+				"from": 1031500,
+				"to": 1041320
+			},
+			"text": " It just happened that the initial, but in the department is more likely the rule should"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:21,320",
+				"to": "00:17:41,540"
+			},
+			"offsets": {
+				"from": 1041320,
+				"to": 1061540
+			},
+			"text": " be more comfortable, right? Yeah. That rightly suggest just the one thing, but we just want"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:41,540",
+				"to": "00:17:45,280"
+			},
+			"offsets": {
+				"from": 1061540,
+				"to": 1065280
+			},
+			"text": " us to trim this basis, right? The function should be also being more like configuration"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:45,280",
+				"to": "00:18:17,850"
+			},
+			"offsets": {
+				"from": 1065280,
+				"to": 1097850
+			},
+			"text": " right down. So these kind of studies know what all this is doing. Sorry. He's just a convert"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:17,850",
+				"to": "00:18:41,950"
+			},
+			"offsets": {
+				"from": 1097850,
+				"to": 1121950
+			},
+			"text": " that to XLS X. I think the hand under there, just in check input file and call it instead"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:41,950",
+				"to": "00:18:49,800"
+			},
+			"offsets": {
+				"from": 1121950,
+				"to": 1129800
+			},
+			"text": " of those that's it. Need to do broken references. Does it need to do on this upload and put file"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:49,800",
+				"to": "00:19:18,540"
+			},
+			"offsets": {
+				"from": 1129800,
+				"to": 1158540
+			},
+			"text": " and there are hidden columns or something like is it going to return them as I'm with the"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:18,540",
+				"to": "00:19:22,580"
+			},
+			"offsets": {
+				"from": 1158540,
+				"to": 1162580
+			},
+			"text": " resident columns. You know what I would've done, right? It's just like, because it's like"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:22,580",
+				"to": "00:19:27,260"
+			},
+			"offsets": {
+				"from": 1162580,
+				"to": 1167260
+			},
+			"text": " too much of things maybe because it's just a looping through that chase on ultimately"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:27,260",
+				"to": "00:19:30,560"
+			},
+			"offsets": {
+				"from": 1167260,
+				"to": 1170560
+			},
+			"text": " what it is doing. Right. It's looking through the Jason and removing the characters. What"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:30,560",
+				"to": "00:19:38,180"
+			},
+			"offsets": {
+				"from": 1170560,
+				"to": 1178180
+			},
+			"text": " is not in the list. Right. So the same thing is that we already did the Excel part, right?"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:38,180",
+				"to": "00:19:44,100"
+			},
+			"offsets": {
+				"from": 1178180,
+				"to": 1184100
+			},
+			"text": " Into pandas when we run, they do checks. If that's the case, we could have just added"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:44,100",
+				"to": "00:19:55,360"
+			},
+			"offsets": {
+				"from": 1184100,
+				"to": 1195360
+			},
+			"text": " a simple method, right? And then just remove those cases. Right. Because we're already here,"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:55,360",
+				"to": "00:19:59,120"
+			},
+			"offsets": {
+				"from": 1195360,
+				"to": 1199120
+			},
+			"text": " since we're already reading, but it gets into the pandas already. The data is in an area,"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:59,120",
+				"to": "00:20:08,120"
+			},
+			"offsets": {
+				"from": 1199120,
+				"to": 1208120
+			},
+			"text": " right? You could have just done that. And then the data of the pilot ended. So yeah, this"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:08,120",
+				"to": "00:20:32,520"
+			},
+			"offsets": {
+				"from": 1208120,
+				"to": 1232520
+			},
+			"text": " is like too much of code and then it's not even reusable to use somewhere, right? Because"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:32,520",
+				"to": "00:20:41,880"
+			},
+			"offsets": {
+				"from": 1232520,
+				"to": 1241880
+			},
+			"text": " it's just, yeah. Anyway, let me just do the corrections, right? What we said did. And then"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:41,880",
+				"to": "00:20:52,510"
+			},
+			"offsets": {
+				"from": 1241880,
+				"to": 1252510
+			},
+			"text": " let's take a list. Yeah. Okay. Yeah. No. Thank you. Ross."
+		}
+	]
+}
