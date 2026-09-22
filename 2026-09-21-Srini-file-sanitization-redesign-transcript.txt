@@ -1,0 +1,81 @@
+ Because in Digital Connect we're already reading the file and passing everything right. Before we pass everything right, but Digital Connect even that shouldn't be an issue because we can always be creating the funding file for ProMerit right. When we create the funding file for ProMerit we can replace whatever is there. Right.
+ Right.
+ Even on that, what we can do on the funding right when we create a final funding file right. We just need to remove this special characters right.
+ So we don't need to touch any of the client files or anything the final funding which we generate we just remove those special characters.
+ So just one simple method call. When we're creating this final funding file, we just replace those characters, whatever we don't want to. And that should do it. That should reduce the whole architecture right. It's just only one method in each service.
+ Yeah, that could simplify but do you think that it would be easier to just fix what we have now?
+ But there's so many issues right. Ross I'm not sure about that right. Because the whole process right it takes because now we had to deploy everything right. The whole right. Here it's just very simple because on the Digital Connect anyway when we're creating the file for ProMerit right. All we just need to make sure is those special characters doesn't exist.
+ The same thing for funding right. When I'm creating a final funding file, all I just need to make sure is those special characters doesn't exist in the final funding file.
+ You think about it right and let me know right. Because I feel that's easy. It's just one method. Anyway we're reading the file there. There's no performance issue. It's just right when you're writing the file you just make sure you just replace those characters as the logic we already have right. That's all.
+ Yeah, I think we can possibly simplify what is there but what I was thinking is that.
+ Okay, if you have it just send me like what you think right. Yeah. How we want to simplify it right.
+ Because what I see is like.
+ Yeah, well not. Okay, so this is what I'm thinking I'm thinking that the errors that we had last when we tested it. It's just an error from the validation for funding, and if that's fixed, you know, just the whatever it's whatever it's changing the file to I think it was a date or something.
+ Whatever it's changing that to with that's fixed which I think it's fixed, it just needs to be tested, because we haven't tested the fix yet, then that would then it would be ready to go.
+ Okay, so how long.
+ Okay, yeah, that fixed right what you're talking about how long does it do you think it's going to take right and maybe we can deploy it and then we can.
+ Okay, okay, let me give those PRs today right I'll just upload and make sure we just deploy it right now and then let's test it right if you can't, but if you have any more issues right now, then we need to make sure we simplify it okay.
+ And Srini, but when we were deploying we saw payoff also had issues. So, what was that that's related to some deployment issue or code issue.
+ Yeah, let's, I think I'm not sure what the changes what fixes Ross has right now, let me see and after that we'll upload one file and see what, but Ross if you have any issues right maybe I think we just need to.
+ Yeah.
+ The problem is, it's kind of difficult to see understand everything what is happening right with so many changes.
+ Yeah, because the maintenance, the maintenance is going to be a lot more difficult right.
+ Yeah, well, I just, I just want to get a better understanding of what, what your idea is for. Okay, can I show it to you, let me show it to you right.
+ So, on the payoff submissions right. So whenever it is ready for review right.
+ There is a generate ProMerit file here. Right. Once you click on, there is a simple one method call that is happening in the, which are showing Srini. Sorry, I might be wrong one.
+ Let me share again sorry.
+ Is it the blue screen is that the one. Sorry, I think I'm sharing the wrong window. But yeah, if we see that Ross, this is the payoff submission this is coming, everything, the API is from digital connect.
+ So once you click this button right.
+ It is generating a file that we need to upload into ProMerit.
+ Right. At that time it is creating a file based on the data in the database.
+ Correct. And now what I'm saying is that we write one method.
+ Right.
+ Which is just like say it takes in a string. Right. And then replaces the special characters that we don't want to write.
+ Or it only allows right or you can do the allow list right. If it is not in the allow list we just block it. It's just a one method right.
+ So, this method when you call this method right that generate the ProMerit file, because it has to get the data from database. Correct.
+ And then this is the data is getting from the database. And then we just need to kind of anyway we are writing the file there.
+ It is called that one method, which checks okay the BMC there's no special characters right so I can write BMC as it is right, only if there is a character which is not in the allow list, then we need to replace it.
+ Just one method right. You don't need to write it the method should not be longer than.
+ Maybe 15, 20 lines right, it just has a string. And then if that regular expression matches it doesn't match right then you just need to replace that character find and replace. Correct.
+ And then it takes in and generates a file.
+ That's all right, because the generate file if you look at the code it's already getting the data from the database.
+ And then it's passing the data set into the export Excel right.
+ So at that time, when it's exporting the text right you just need to put it, put that
+ handler in place.
+ Right.
+ That's for digital connect. So we don't need to change any permissions anything, everything else will remain the same, right, only one method call.
+ Similarly for funding file right.
+ When I click on just loan amount required or something right when I click on just validate and finalize right there's a button there right at that time, it also creates a final file.
+ So the final file is also taking the existing funding file and modifying it.
+ Right.
+ So that's exactly where you need to write a similar method and similar thing, just only one method. Right, and call set method and then you're done.
+ And what about the funding request, the initial part of it.
+ Initially, it's not going to ProMerit at all right, it's okay right now. We don't need to touch the client file at all.
+ Because that doesn't go into ProMerit right, all we need to change is the file that is going into ProMerit doesn't have these invalid characters.
+ Some emails, they say [unclear] didn't stop it and staging ground is getting blocked.
+ [Unclear] is not getting, and then staging ground is getting blocked.
+ Yeah, so we have to find those scenarios. I remember seeing something on that. Yeah, those are not also handled in Ross's code currently, right Lenny? Those we don't know, right? Those we need to figure out why staging ground is not able to handle it, right?
+ Okay, you're saying.
+ Because this is what Ross's change is going to do right. He's just only replacing the file so that it can be uploaded into ProMerit.
+ The errors in staging ground.
+ He has nothing to do with the errors in staging ground right. His code is not going to handle them, even the current code right Ross.
+ Say for example we are able to read an Excel file. Staging ground is not able to read that Excel file. Your changes are not going to fix those right.
+ Right.
+ The changes are just on the initial funding request and payoff submission.
+ And would there be a scenario where the initial file is uploaded by client, like ops upload in ProMerit and test something and then they will make like maximum changes, would there be a scenario like that? Where they need to upload the initial file to ProMerit?
+ I don't think they can upload that initial file to ProMerit, right? They only need to upload the final file to ProMerit, right? I don't think so.
+ Yeah, so it needs to be taken off of the Resi funding request when we hit submit.
+ You don't need to do anything else, right? Just only the Resi funding request, right?
+ Lenny, do you remember what is the status right? Is that max? Yeah, one is approval in progress. We think one is loan amount required, so as soon as the client confirms the loan amount.
+ And then it goes into status called
+ progress, not ready for upload I think I can't see that ready for upload ready for upload is inside the screen right here it if you click on approval in progress. Okay.
+ In progress.
+ So here we already have a final funding file, right? You can look into the code just right before we create this final file, right? That's when we need to call the... So when you confirm the [unclear] 2.0, when you confirm the STD, when you upload the STD files.
+ At that point, depending on the code, right Ross? There's a method that is called to create the final funding file. In that method, you need to make the change.
+ Deepesh should be able to tell him because Deepesh is working on this.
+ Let me see I think.
+ Okay, Ross, I can send you that one, right, the method what is in the final funding file in funding, right, so you will have an idea.
+ Srini, we have a call at one. I'll just quickly need to pick up my food before that. No worries. Okay, I think we're done, right?
+ Yeah, [overlapping conversation]. Okay, thanks everyone.
+ Yeah, thank you.
+ Thank you.

@@ -1,0 +1,251 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:24.000
+ Because in Digital Connect we're already reading the file and passing everything right. Before we pass everything right, but Digital Connect even that shouldn't be an issue because we can always be creating the funding file for PromoNet right. When we create the funding file for PromoNet we can replace whatever is there. Right.
+
+00:00:24.000 --> 00:00:30.000
+ Right.
+
+00:00:30.000 --> 00:00:42.000
+ Even on that, what we can do on the funding right when we create a final funding file right. We just need to remove this special characters right.
+
+00:00:42.000 --> 00:00:49.000
+ So we don't need to touch any of the client files or anything the final funding which we generate we just remove those special characters.
+
+00:00:49.000 --> 00:01:09.000
+ So just one simple method call. When we're creating this final funding file, we just replace those characters, whatever we don't want to. And that should do it. That should reduce the whole architecture right. It's just only one method in each service.
+
+00:01:09.000 --> 00:01:19.000
+ Yeah, that could simplify but do you think that it would be easier to just fix what we have now?
+
+00:01:19.000 --> 00:01:43.000
+ But there's so many issues right. Ross I'm not sure about that right. Because the whole process right it takes because now we had to deploy everything right. The whole right. Here it's just very simple because on the Digital Connect anyway when we're creating the file for PromoNet right. All we just need to make sure is those special characters doesn't exist.
+
+00:01:43.000 --> 00:01:57.000
+ The same thing for funding right. When I'm creating a final funding file, all I just need to make sure is those special characters doesn't exist in the final funding file.
+
+00:01:57.000 --> 00:02:16.000
+ You think about it right and let me know right. Because I feel that's easy. It's just one method. Anyway we're reading the file there. There's no performance issue. It's just right when you're writing the file you just make sure you just replace those characters as the logic we already have right. That's all.
+
+00:02:16.000 --> 00:02:24.000
+ Yeah, I think we can possibly simplify what is there but what I was thinking is that.
+
+00:02:24.000 --> 00:02:32.000
+ Okay, if you have it just send me like what you think right. Yeah. How we want to simplify it right.
+
+00:02:32.000 --> 00:02:36.000
+ Because what I see is like.
+
+00:02:36.000 --> 00:03:00.000
+ Yeah, well not. Okay, so this is what I'm thinking I'm thinking that the errors that we had last when we tested it. It's just an error from the validation for funding, and if that's fixed, you know, just the whatever it's whatever it's changing the file to I think it was a date or something.
+
+00:03:00.000 --> 00:03:12.000
+ Whatever it's changing that to with that's fixed which I think it's fixed, it just needs to be tested, because we haven't tested the fix yet, then that would then it would be ready to go.
+
+00:03:12.000 --> 00:03:16.000
+ Okay, so how long.
+
+00:03:16.000 --> 00:03:33.000
+ Okay, yeah, that fixed right what you're talking about how long does it do you think it's going to take right and maybe we can deploy it and then we can.
+
+00:03:33.000 --> 00:03:46.000
+ Okay, okay, let me give those PRs today right I'll just upload and make sure we just deploy it right now and then let's test it right if you can't, but if you have any more issues right now, then we need to make sure we simplify it okay.
+
+00:03:46.000 --> 00:03:57.000
+ And Shrini, but when we were deploying we saw payoff also had issues. So, what was that that's related to some deployment issue or code issue.
+
+00:03:57.000 --> 00:04:08.000
+ Yeah, let's, I think I'm not sure what the changes what fixes Ross has right now, let me see and after that we'll upload one file and see what, but Ross if you have any issues right maybe I think we just need to.
+
+00:04:08.000 --> 00:04:10.000
+ Yeah.
+
+00:04:10.000 --> 00:04:20.000
+ The problem is, it's kind of difficult to see understand everything what is happening right with so many changes.
+
+00:04:20.000 --> 00:04:30.000
+ Yeah, because the maintenance, the maintenance is going to be a lot more difficult right.
+
+00:04:30.000 --> 00:04:46.000
+ Yeah, well, I just, I just want to get a better understanding of what, what your idea is for. Okay, can I show it to you, let me show it to you right.
+
+00:04:46.000 --> 00:04:52.000
+ So, on the payoff submissions right. So whenever it is ready for review right.
+
+00:04:52.000 --> 00:05:04.000
+ There is a generate promo file here. Right. Once you click on, there is a simple one method call that is happening in the, which are showing Shrini. Sorry, I might be wrong one.
+
+00:05:04.000 --> 00:05:07.000
+ Let me share again sorry.
+
+00:05:07.000 --> 00:05:19.000
+ Is it the blue screen is that the one. Sorry, I think I'm sharing the wrong window. But yeah, if we see that Ross, this is the payoff submission this is coming, everything, the API is from digital connect.
+
+00:05:19.000 --> 00:05:22.000
+ So once you click this button right.
+
+00:05:22.000 --> 00:05:27.000
+ It is generating a file that we need to upload into prominent.
+
+00:05:27.000 --> 00:05:32.000
+ Right. At that time it is creating a file based on the data in the database.
+
+00:05:32.000 --> 00:05:37.000
+ Correct. And now what I'm saying is that we write one method.
+
+00:05:37.000 --> 00:05:38.000
+ Right.
+
+00:05:38.000 --> 00:05:48.000
+ Which is just like say it sticks in a string. Right. And then replaces the special characters that we don't want to write.
+
+00:05:48.000 --> 00:05:56.000
+ Or it only allows right or you can do the allow list right. If it is not in the allow list we just block it. It's just a one method right.
+
+00:05:56.000 --> 00:06:06.000
+ So, this method when you call this method right that generate the prominent file, because it has to get the data from database. Correct.
+
+00:06:06.000 --> 00:06:14.000
+ And then this is the data is getting from the database. And then we just need to kind of anyway we are writing the file there.
+
+00:06:14.000 --> 00:06:28.000
+ It is called that one method, which checks okay the BMC there's no special characters right so I can write BMC as it is right, only if there is a character which is not in the allow list, then we need to replace it.
+
+00:06:28.000 --> 00:06:33.000
+ Just one method right. You don't need to write it the method should not be longer than.
+
+00:06:33.000 --> 00:06:45.000
+ Maybe 1520 lines right, it just has a string. And then if that regular expression matches it doesn't match right then you just need to replace that character find and replace. Correct.
+
+00:06:45.000 --> 00:06:50.000
+ And then it takes in and generates a file.
+
+00:06:50.000 --> 00:06:56.000
+ That's all right, because the generate file if you look at the code it's already getting the data from the database.
+
+00:06:56.000 --> 00:07:00.000
+ And then it's passing the data set into the export Excel right.
+
+00:07:00.000 --> 00:07:07.000
+ So at that time, when it's exporting the text right you just need to put it, put that
+
+00:07:07.000 --> 00:07:12.000
+ handler in place.
+
+00:07:12.000 --> 00:07:13.000
+ Right.
+
+00:07:13.000 --> 00:07:22.000
+ That's for digital connect. So we don't need to change any permissions anything, everything else will remain the same, right, only one method call.
+
+00:07:22.000 --> 00:07:28.000
+ Similarly for funding file right.
+
+00:07:28.000 --> 00:07:40.000
+ When I click on just lend amount required or something right when I click on just validate and finalize right there's a button there right at that time, it also creates a final file.
+
+00:07:40.000 --> 00:07:45.000
+ So the final file is also taking the existing funding file and modifying it.
+
+00:07:45.000 --> 00:07:47.000
+ Right.
+
+00:07:47.000 --> 00:07:57.000
+ So that's exactly where you need to write a similar method and similar thing, just only one method. Right, and call set method and then you're done.
+
+00:07:57.000 --> 00:08:02.000
+ And what about the funding request, the initial part of it.
+
+00:08:02.000 --> 00:08:10.000
+ Initial it's not going to promote it at all right it's okay right down with the, we don't need to touch the client file at all.
+
+00:08:10.000 --> 00:08:20.000
+ Because that doesn't go into prominent right all we need to change is the file that is going into prominent doesn't have these invalid characters.
+
+00:08:20.000 --> 00:08:28.000
+ Some, some emails. They say like, we didn't, he didn't stop it and staging round is getting blocked.
+
+00:08:28.000 --> 00:08:34.000
+ What do we do is not getting, and then staging round is getting blocked.
+
+00:08:34.000 --> 00:08:49.000
+ Yeah, so we have to find those scenarios and I remember seeing something on that those are not also handled in process code currently right Lenny he's only those we don't know right those we need to figure it out why staging round is not able to handle it right.
+
+00:08:49.000 --> 00:08:52.000
+ Okay, you're saying.
+
+00:08:52.000 --> 00:08:59.000
+ Because this is what Ross's change is going to do right he's just only replacing the file so that it can be uploaded into prominent.
+
+00:08:59.000 --> 00:09:01.000
+ There is in staging round.
+
+00:09:01.000 --> 00:09:09.000
+ He has nothing to do with the rest and staging ground right his code is not going to handle them, even the current code right Ross.
+
+00:09:09.000 --> 00:09:18.000
+ Say for example we are able to read an Excel file staging ground is not able to read that Excel file, your changes are not going to fix those right.
+
+00:09:18.000 --> 00:09:21.000
+ Right.
+
+00:09:21.000 --> 00:09:27.000
+ The changes are just on the initial funding request and pay off submission.
+
+00:09:27.000 --> 00:09:49.000
+ And would they be a scenario where the initial file is uploaded by client, like ops upload and promo it and test something and then they will make like maximum changes put their be a scenario like that, but they need to upload the initial file to global primary.
+
+00:09:49.000 --> 00:09:56.000
+ I don't think they can upload that initial file to prominent red the only need upload the final file to prominent red zone. I don't think so.
+
+00:09:56.000 --> 00:10:04.000
+ Yeah, so it needs to be taken off of the funding ready funding request. When we hit submit.
+
+00:10:04.000 --> 00:10:13.000
+ You don't need to do anything else I just only get there is a funding request right when we
+
+00:10:13.000 --> 00:10:29.000
+ think Lenny do you remember what is the status right is that Max. Yeah, one is approval in progress. So when no one. We think one is land amount required as soon as a client confirms the land amount.
+
+00:10:29.000 --> 00:10:32.000
+ And then it goes into status called
+
+00:10:32.000 --> 00:10:43.000
+ progress, not ready for upload I think I can't see that ready for upload ready for upload is inside the screen right here it if you click on approval in progress. Okay.
+
+00:10:43.000 --> 00:10:52.000
+ In progress.
+
+00:10:52.000 --> 00:11:07.000
+ So here we already have a final funding file that you can look into the code just right before we create this final file right that's when we need to call so when you confirm the in sample 2.0 when you confirm the STD when you upload the STD files.
+
+00:11:07.000 --> 00:11:20.000
+ At that point, I think, depending on the depending on the code right. There's a method that is called to create the final funding file in that method you need to make the change.
+
+00:11:20.000 --> 00:11:24.000
+ The patient able to tell him because the patient was working on this.
+
+00:11:24.000 --> 00:11:45.000
+ Let me see I think.
+
+00:11:45.000 --> 00:11:51.000
+ Okay, so I can send you that one right at the method what is in the final funding file in funding right.
+
+00:11:51.000 --> 00:11:55.000
+ So you will have an idea.
+
+00:11:55.000 --> 00:11:57.000
+ To show you.
+
+00:11:57.000 --> 00:12:05.000
+ We have a call at one I'll just quickly to pick up my food before that. No worries. Okay, I think we're done right now.
+
+00:12:05.000 --> 00:12:10.000
+ Yeah, process around we give everyone stories. Now that Okay, thanks everyone.
+
+00:12:10.000 --> 00:12:12.000
+ Yeah, thank you.
+
+00:12:12.000 --> 00:12:18.000
+ Thank you.
+
